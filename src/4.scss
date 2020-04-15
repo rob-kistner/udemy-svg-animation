@@ -1,0 +1,47 @@
+$len-hex: 425;
+$len-square: 610;
+
+svg {
+  position: absolute;
+  top: 0; right: 0; left: 0; bottom: 0;
+  margin: auto;
+}
+
+.square {
+  // creates dashes, larger nums = longer dashes
+  stroke-dasharray: $len-square;
+  // moves from current position
+  stroke-dashoffset: -($len-square);
+  // apply animation
+  animation: draw-square 1.5s infinite;
+  // must transform from the center
+  // for rotation
+  transform-origin: 50% 50%;
+}
+.hex {
+  stroke-dasharray: $len-hex;
+  stroke-dashoffset: -($len-hex);
+  animation: draw-hex 2s infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes draw-square {
+  from {
+    stroke-dashoffset: -($len-square);
+    transform: rotate(0deg);
+  }
+  to {
+    stroke-dashoffset: 0;
+    transform: rotate(720deg);
+  }
+}
+@keyframes draw-hex {
+  from {
+    stroke-dashoffset: -($len-hex);
+    transform: rotate(0deg);
+  }
+  to {
+    stroke-dashoffset: 0;
+    transform: rotate(360deg);
+  }
+}
